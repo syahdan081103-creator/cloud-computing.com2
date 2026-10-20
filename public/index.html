@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fc">
+  <title>EduManage — Manajemen Mahasiswa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="EduManage beranda">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.5 12 4l9 4.5-9 4.5L3 8.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6.5 10.5v5.1c3.5 2.8 7.5 2.8 11 0v-5.1M21 9v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <span>Edu<span class="brand-light">Manage</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-list">
+        <a class="nav-item active" href="#dashboard"><span class="nav-icon">▦</span> Dashboard</a>
+        <a class="nav-item" href="#students"><span class="nav-icon">♙</span> Data Mahasiswa <span class="nav-count" id="sideCount">0</span></a>
+        <a class="nav-item" href="#reports"><span class="nav-icon">▤</span> Laporan</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">💬</div>
+          <strong>Butuh bantuan?</strong>
+          <p>Kelola data akademik dengan lebih mudah dan terorganisir.</p>
+          <a href="tentang.html">Tentang aplikasi <span>↗</span></a>
+        </div>
+        <div class="profile-mini">
+          <div class="avatar avatar-admin">SA</div>
+          <div class="profile-copy"><strong>Admin Sistem</strong><span>Administrator</span></div>
+          <span class="more">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Dashboard</strong></div>
+        <div class="top-actions">
+          <div class="system-status"><span class="status-dot"></span><span id="connectionLabel">Memeriksa koneksi</span></div>
+          <button class="icon-button notification" aria-label="Notifikasi">♧<i></i></button>
+          <div class="top-avatar">SA</div>
+        </div>
+      </header>
+
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> STUDENT MANAGEMENT SYSTEM</div>
+          <h1>Dashboard <span>Overview</span></h1>
+          <p>Selamat datang kembali! Berikut ringkasan data akademik kamu.</p>
+        </div>
+        <div class="heading-date"><span class="date-icon">▦</span><span id="todayDate">Memuat tanggal...</span></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Statistik mahasiswa">
+        <article class="stat-card stat-primary">
+          <div class="stat-top"><span>Total Mahasiswa</span><span class="stat-icon icon-blue">♙</span></div>
+          <div class="stat-value" id="totalStudents">—</div>
+          <div class="stat-foot"><span class="trend-pill">● Data</span><span class="muted">seluruh mahasiswa</span></div>
+          <div class="stat-decoration decoration-blue"></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Mahasiswa Aktif</span><span class="stat-icon icon-green">✓</span></div>
+          <div class="stat-value" id="activeStudents">—</div>
+          <div class="stat-foot"><span class="mini-dot green"></span><span class="muted">status aktif</span></div>
+          <div class="stat-decoration decoration-green"></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Sedang Cuti</span><span class="stat-icon icon-orange">◷</span></div>
+          <div class="stat-value" id="leaveStudents">—</div>
+          <div class="stat-foot"><span class="mini-dot orange"></span><span class="muted">status cuti</span></div>
+          <div class="stat-decoration decoration-orange"></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Telah Lulus</span><span class="stat-icon icon-purple">✦</span></div>
+          <div class="stat-value" id="graduatedStudents">—</div>
+          <div class="stat-foot"><span class="mini-dot purple"></span><span class="muted">status lulus</span></div>
+          <div class="stat-decoration decoration-purple"></div>
+        </article>
+      </section>
+
+      <section class="content-card" id="students">
+        <div class="card-heading">
+          <div>
+            <div class="section-kicker">DATABASE AKADEMIK</div>
+            <h2>Data Mahasiswa <span class="count-badge" id="tableCount">0 data</span></h2>
+            <p>Kelola, perbarui, dan pantau data mahasiswa dalam satu tempat.</p>
+          </div>
+          <button class="primary-button" id="addStudentBtn"><span class="plus">＋</span> Tambah Mahasiswa</button>
+        </div>
+        <div class="toolbar">
+          <label class="search-box"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="Cari nama, NIM, email..." autocomplete="off"><kbd>⌘ K</kbd></label>
+          <div class="toolbar-right">
+            <label class="filter-wrap"><span>☷</span><select id="statusFilter" aria-label="Filter status"><option value="">Semua Status</option><option>Aktif</option><option>Cuti</option><option>Lulus</option></select></label>
+            <button class="secondary-button" id="refreshBtn"><span class="refresh-icon">↻</span> Refresh</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th><input type="checkbox" aria-label="Pilih semua" disabled></th><th>MAHASISWA</th><th>NIM</th><th>PROGRAM STUDI</th><th>FAKULTAS</th><th>STATUS</th><th class="action-heading">AKSI</th></tr></thead>
+            <tbody id="studentTableBody"><tr><td colspan="7" class="loading-cell"><span class="loader"></span> Memuat data mahasiswa...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <span id="tableSummary">Menampilkan data...</span>
+          <div class="pagination"><button id="prevPage" disabled aria-label="Halaman sebelumnya">←</button><span class="page-current" id="pageNumber">1</span><button id="nextPage" disabled aria-label="Halaman selanjutnya">→</button></div>
+        </div>
+      </section>
+
+      <section class="bottom-grid" id="reports">
+        <article class="insight-card">
+          <div class="insight-icon">↗</div><div><h3>Data terorganisir, keputusan lebih baik.</h3><p>Gunakan pencarian dan filter status untuk menemukan data yang kamu butuhkan dengan cepat.</p></div>
+          <div class="insight-orb"></div>
+        </article>
+        <article class="system-card" id="about">
+          <div class="system-card-heading"><span class="system-symbol">⌘</span><strong>Status Sistem</strong><span class="live-label">LIVE</span></div>
+          <div class="system-row"><span><i class="tiny-status" id="apiDot"></i> REST API</span><strong id="apiStatus">Memeriksa...</strong></div>
+          <div class="system-row"><span><i class="tiny-status" id="dbDot"></i> Database SQL</span><strong id="dbStatus">Memeriksa...</strong></div>
+          <div class="system-row"><span><i class="tiny-status green"></i> CRUD Module</span><strong class="text-green">Tersedia</strong></div>
+        </article>
+      </section>
+      <footer class="footer"><span>© 2026 EduManage. Student Management System.</span><span>Dibuat untuk proyek Cloud Computing <b>•</b> v1.0.0</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="studentModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header"><div><div class="section-kicker">FORMULIR AKADEMIK</div><h2 id="modalTitle">Tambah Mahasiswa</h2><p>Lengkapi informasi mahasiswa di bawah ini.</p></div><button class="icon-button close-modal" id="closeModal" aria-label="Tutup">×</button></div>
+      <form id="studentForm">
+        <div class="form-grid">
+          <label class="field"><span>NIM <b>*</b></span><input name="nim" required maxlength="30" placeholder="Contoh: 202610001"></label>
+          <label class="field"><span>Nama lengkap <b>*</b></span><input name="name" required maxlength="120" placeholder="Nama mahasiswa"></label>
+          <label class="field field-full"><span>Email <b>*</b></span><input name="email" type="email" required maxlength="150" placeholder="nama@email.com"></label>
+          <label class="field"><span>Program studi <b>*</b></span><input name="program" required maxlength="100" placeholder="Contoh: Informatika"></label>
+          <label class="field"><span>Fakultas <b>*</b></span><input name="faculty" required maxlength="120" placeholder="Contoh: Fakultas Teknik"></label>
+          <label class="field"><span>Nomor HP</span><input name="phone" maxlength="25" placeholder="08xxxxxxxxxx"></label>
+          <label class="field"><span>Status mahasiswa</span><select name="status"><option>Aktif</option><option>Cuti</option><option>Lulus</option></select></label>
+        </div>
+        <div class="form-note"><span>ⓘ</span> Kolom bertanda <b>*</b> wajib diisi. NIM harus unik.</div>
+        <div class="modal-actions"><button type="button" class="secondary-button" id="cancelModal">Batal</button><button type="submit" class="primary-button" id="saveStudentBtn"><span>✓</span> Simpan Data</button></div>
+      </form>
+    </section>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
